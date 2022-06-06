@@ -7,7 +7,6 @@ class Car
 public:
 	Car(std::string brand);
 	int getIdNumber();
-	Car();
-	void printCar();
+	
 	
 };
