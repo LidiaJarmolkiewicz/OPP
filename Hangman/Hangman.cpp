@@ -2,7 +2,7 @@
 #include<iostream>
 
 
-Hangman::Hangman(std::string secret)
+Hangman::Hangman(std::string secret):attempt(4)
 {
 	this->secret = secret;
 	this->guessedWord = secret;
@@ -15,6 +15,7 @@ Hangman::Hangman(std::string secret)
 	{
 		alphabet[i] = false;
 	}
+
 }
 
 std::string Hangman::getGuess()
@@ -42,6 +43,7 @@ std::string Hangman::getAlphabet()
 
 bool Hangman::guess(char c)
 {
+	bool isLetterDiscovered = false;
 
 	alphabet[c - 'a'] = true;
 
@@ -50,12 +52,24 @@ bool Hangman::guess(char c)
 	{
 		if (secret[i] == c)
 		{
+			isLetterDiscovered = true;
 			guessedWord[i] = c;
 		}
-			
-
+		
 	}
-	return guessedWord == secret;
+	if (isLetterDiscovered==false)
+	{
+		--attempt;
+		
+	}
+
+	if (guessedWord == secret) {
+		return true;
+	}
+	else {
+		return false;
+	}
+	 
 
 }
 	
@@ -64,45 +78,14 @@ bool Hangman::guess(char c)
 		return secret;
 	}
 
-	//bool Hangman::attemptsLeft(char c)
-	//{
+	int Hangman::attemptsLeft()
+	{
+		std::cout << "liczba prob= " << attempt << std::endl;
+		return attempt;
 
-		//return attempt;
-		
-	//}
+	}
+
 
 	
 
 
-	//for (int i = 0; i < secret.length(); ++i)
-	//{
-	//	if (secret[i] == c)
-	//	{
-	//		guessedWord[i] = c;
-	//	}
-	//	else
-	//	{
-	//		for (int i = 0; i < 2; ++i)
-	//		{
-	//			attepmt += i;
-	//		}
-	//	}
-
-	//	for (int i = 0; i < (secret.length() + 2); ++i)
-	//	{
-
-	//		if (attempt < 10)
-	//		{
-	//			return guessedWord == secret;
-	//		}
-	//		else
-	//		{
-
-	//			std::cout << "Przekroczyles limit prob! " << std::endl;
-	//			break;
-
-
-	//		}
-	//	}
-
-	//}

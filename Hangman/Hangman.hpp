@@ -13,8 +13,7 @@ public:
 	//returns true if all characters are guessed
 	bool guess(char c);
 	std::string getSecret();
-	//bool attemptsLeft(char c);
+	int attemptsLeft();
 	
 };
 
-//zdefiniowac konstruktor: wprowadzic secreta; wypelnic tablice; guessed word - same kreski

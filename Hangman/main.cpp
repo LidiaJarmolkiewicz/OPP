@@ -19,12 +19,19 @@ int main()
 		std::cout << "Guess a letter: ";
 		char letter;
 		std::cin >> letter;
-
+		
+		
 		finished = game.guess(letter); // zgadujemy - zmieniamy zarowno guess jak i alfabet
+		int liczbaProb = game.attemptsLeft();
+		if (liczbaProb <= 0)
+		{
+			std::cout << "Secret key ungeussed was: " << game.getGuess() << std::endl;
+			return 0;
+		}
+
 	} while (!finished);
 	
-	
-		std::cout << "Secret key ungeussed was: " << game.getGuess() << std::endl;
+		
 	
 	
 		std::cout << "Secret key was: " << game.getSecret();
